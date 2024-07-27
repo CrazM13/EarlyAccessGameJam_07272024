@@ -15,7 +15,7 @@ public partial class GameManager : Node {
 
 	public override void _Ready() {
 		SetTool(startingTool);
-		if (money == 0) { money = startingMoney; }
+		if (startingMoney != 0) { money = startingMoney; }
 	}
 
 	public int GetMoney() => money;
