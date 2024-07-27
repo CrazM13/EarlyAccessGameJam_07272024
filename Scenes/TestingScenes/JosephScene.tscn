@@ -1,7 +1,86 @@
-[gd_scene load_steps=2 format=3 uid="uid://clx731gdtfj74"]
+[gd_scene load_steps=13 format=3 uid="uid://clx731gdtfj74"]
 
+[ext_resource type="Script" path="res://Scripts/Board/GameManager.cs" id="1_4nos7"]
 [ext_resource type="PackedScene" uid="uid://x7j58ewwj5md" path="res://Assets/Prefabs/SceneTransition.tscn" id="1_rywop"]
+[ext_resource type="Resource" uid="uid://dtte2yk8l3w2g" path="res://Assets/Data/Tools/ToolBrush.tres" id="2_em0g5"]
+[ext_resource type="Texture2D" uid="uid://dg7ayfnyltil8" path="res://Assets/Textures/dev.png" id="2_h7hgs"]
+[ext_resource type="Script" path="res://Scripts/Board/GameBoard.cs" id="3_v16p0"]
+[ext_resource type="Resource" uid="uid://cxuce2m1nhtla" path="res://Assets/Data/Findables/FindableDevObject.tres" id="4_p37yv"]
+[ext_resource type="Texture2D" uid="uid://cvfdou8oswm3e" path="res://Assets/Textures/Tool-Dynamite.png" id="10_s0k2u"]
+[ext_resource type="Texture2D" uid="uid://bppy5v134fdv" path="res://Assets/Textures/Tool-Magnifying_Glass.png" id="11_cf7ne"]
+[ext_resource type="Texture2D" uid="uid://dqhpebjs6r4w4" path="res://Assets/Textures/Tool-Hammer.png" id="12_07mlw"]
+[ext_resource type="Texture2D" uid="uid://dg10b3wrchonp" path="res://Assets/Textures/Tool-Pickaxe.png" id="13_gpve0"]
+[ext_resource type="Texture2D" uid="uid://b4jln76sw48jt" path="res://Assets/Textures/Tool-Brush.png" id="14_jyono"]
 
-[node name="JosephScene" type="Node2D"]
+[sub_resource type="TileSet" id="TileSet_gb5jd"]
+tile_size = Vector2i(128, 128)
+
+[node name="JosephScene" type="Node2D" node_paths=PackedStringArray("sceneManager", "gameBoard")]
+script = ExtResource("1_4nos7")
+startingTool = ExtResource("2_em0g5")
+sceneManager = NodePath("SceneTransition")
+gameBoard = NodePath("TileMap")
 
 [node name="SceneTransition" parent="." instance=ExtResource("1_rywop")]
+
+[node name="TileMap" type="TileMap" parent="." node_paths=PackedStringArray("GameManager", "treasureSprite")]
+position = Vector2(4, 4)
+tile_set = SubResource("TileSet_gb5jd")
+format = 2
+layer_0/tile_data = PackedInt32Array(2, 0, 0, 65538, 0, 0, 131074, 0, 0, 131073, 0, 0, 131072, 0, 0, 65536, 0, 0, 0, 0, 0, 1, 0, 0, 65537, 0, 0, 3, 0, 0, 4, 0, 0, 65540, 0, 0, 65539, 0, 0, 131075, 0, 0, 131076, 0, 0, 196612, 0, 0, 262148, 0, 0, 262147, 0, 0, 196611, 0, 0, 196610, 0, 0, 262146, 0, 0, 262145, 0, 0, 196609, 0, 0, 196608, 0, 0, 262144, 0, 0)
+script = ExtResource("3_v16p0")
+GameManager = NodePath("..")
+treasureSprite = NodePath("Treasure")
+findableObjects = Array[Resource]([ExtResource("4_p37yv")])
+
+[node name="Treasure" type="Sprite2D" parent="TileMap"]
+z_index = -1
+texture = ExtResource("2_h7hgs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(256, 0)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("10_s0k2u")
+
+[node name="Button2" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("11_cf7ne")
+
+[node name="Button3" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("12_07mlw")
+
+[node name="Button4" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("13_gpve0")
+
+[node name="Button5" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+icon = ExtResource("14_jyono")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 225)
+layout_mode = 2

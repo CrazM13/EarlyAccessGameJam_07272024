@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cxuce2m1nhtla"]
+
+[ext_resource type="Texture2D" uid="uid://dg7ayfnyltil8" path="res://Assets/Textures/dev.png" id="1_jofsg"]
+[ext_resource type="Script" path="res://Scripts/Board/FindableObject.cs" id="2_lwt1e"]
+
+[resource]
+script = ExtResource("2_lwt1e")
+icon = ExtResource("1_jofsg")
+tilePositions = PackedVector2Array(0, 0)
+value = 0
+revealOptions = null

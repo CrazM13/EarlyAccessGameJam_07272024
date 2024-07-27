@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dtte2yk8l3w2g"]
+
+[ext_resource type="Script" path="res://Scripts/Tools/ToolDigger.cs" id="1_jbvpq"]
+
+[resource]
+script = ExtResource("1_jbvpq")
+offsets = PackedVector2Array()
