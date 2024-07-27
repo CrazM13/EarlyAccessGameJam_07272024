@@ -26,7 +26,7 @@ public partial class GameManager : Node {
 	public void DeductMoney(int money) {
 		this.money -= money;
 
-		if (this.money < 0) {
+		if (this.money <= 0) {
 			sceneManager.LoadScene("res://Scenes/GameOver.tscn");
 		}
 	}

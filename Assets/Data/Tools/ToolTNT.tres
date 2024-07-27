@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cno1kltty4k7r"]
+
+[ext_resource type="Script" path="res://Scripts/Tools/ToolTNT.cs" id="1_x0cyf"]
+
+[resource]
+script = ExtResource("1_x0cyf")

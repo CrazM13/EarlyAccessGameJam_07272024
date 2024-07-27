@@ -20,7 +20,7 @@ public partial class FindableObject : Resource {
 	}
 
 	public FindableObject Reveal(Vector2I position) {
-		if (revealOptions == null) return this; 
+		if (revealOptions == null || revealOptions.Length <= 0) return this; 
 		return revealOptions[(position.X + position.Y) % revealOptions.Length];
 	}
 }

@@ -148,6 +148,9 @@ public partial class GameBoard : TileMap {
 	}
 
 	public bool FoundTreasure() {
+
+		if (treasureObject == null) return false;
+
 		Vector2I[] adjustedPositions = treasureObject.GetAdjustedPositions(treasureLocation);
 
 		foreach (Vector2I pos in adjustedPositions) {
@@ -158,6 +161,21 @@ public partial class GameBoard : TileMap {
 
 		return true;
 
+	}
+
+	public FindableObject GetFindableObject() { return treasureObject; }
+
+	public void RemoveFindableObject() {
+		treasureObject = null;
+		treasureSprite.Visible = false;
+	}
+
+	public void ResetGameBoard() {
+
+		GenerateTilemap();
+
+
+		treasureSprite.Visible = true;
 	}
 
 }
