@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://pjqg8kcj22jl"]
+[gd_scene load_steps=3 format=3 uid="uid://pjqg8kcj22jl"]
 
 [ext_resource type="PackedScene" uid="uid://x7j58ewwj5md" path="res://Assets/Prefabs/SceneTransition.tscn" id="1_fqs6i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xrv88"]
+font_size = 181
+font_color = Color(0.258824, 0.172549, 0.0196078, 1)
+outline_size = 20
+outline_color = Color(0.756863, 0.447059, 0.188235, 1)
+shadow_size = 83
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,3 +19,43 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SceneTransition" parent="." instance=ExtResource("1_fqs6i")]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "The Big Dig!"
+label_settings = SubResource("LabelSettings_xrv88")
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+text = "Play"
+
+[node name="Button3" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+text = "Quit
+"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/Button" to="SceneTransition" method="LoadScene" binds= ["res://Scenes/GameScene.tscn"]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer2/Button3" to="SceneTransition" method="Quit"]
