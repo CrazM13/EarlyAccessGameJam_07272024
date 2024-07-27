@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://vo5galppdjl1"]
+[gd_scene load_steps=28 format=3 uid="uid://vo5galppdjl1"]
 
 [ext_resource type="Script" path="res://Scripts/Board/GameManager.cs" id="1_7woft"]
 [ext_resource type="PackedScene" uid="uid://x7j58ewwj5md" path="res://Assets/Prefabs/SceneTransition.tscn" id="1_650y6"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dqhpebjs6r4w4" path="res://Assets/Textures/Tool-Hammer.png" id="12_re038"]
 [ext_resource type="Resource" uid="uid://bvihdcmnwac4h" path="res://Assets/Data/Findables/FindableSapphire.tres" id="13_2hngg"]
 [ext_resource type="Texture2D" uid="uid://dg10b3wrchonp" path="res://Assets/Textures/Tool-Pickaxe.png" id="13_d415a"]
+[ext_resource type="Resource" uid="uid://dhoeq24d62m4b" path="res://Assets/Data/Findables/FindableCursedRing.tres" id="14_6ncas"]
 [ext_resource type="Texture2D" uid="uid://b4jln76sw48jt" path="res://Assets/Textures/Tool-Brush.png" id="14_10e2l"]
 [ext_resource type="Resource" uid="uid://6a8clqgc3534" path="res://Assets/Data/Tools/ToolHammer.tres" id="14_j2125"]
 [ext_resource type="Resource" uid="uid://5n2yhq6f6pew" path="res://Assets/Data/Tools/ToolChisle.tres" id="16_36ni7"]
@@ -48,7 +49,7 @@ layer_0/tile_data = PackedInt32Array(2, 0, 0, 65538, 0, 0, 131074, 0, 0, 131073,
 script = ExtResource("7_enu61")
 GameManager = NodePath("..")
 treasureSprite = NodePath("Treasure")
-findableObjects = Array[Resource]([ExtResource("6_cwto0"), ExtResource("7_cn0n0"), ExtResource("8_wc7vh"), ExtResource("9_483bh"), ExtResource("10_h2al8"), ExtResource("11_r75wd"), ExtResource("12_icrcj"), ExtResource("13_2hngg")])
+findableObjects = Array[Resource]([ExtResource("6_cwto0"), ExtResource("7_cn0n0"), ExtResource("8_wc7vh"), ExtResource("9_483bh"), ExtResource("10_h2al8"), ExtResource("11_r75wd"), ExtResource("12_icrcj"), ExtResource("13_2hngg"), ExtResource("14_6ncas")])
 
 [node name="Treasure" type="Sprite2D" parent="TileMap"]
 z_index = -1
