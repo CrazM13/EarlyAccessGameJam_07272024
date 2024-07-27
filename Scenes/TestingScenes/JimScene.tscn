@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1y4l3f4ygk5o"]
+
+[ext_resource type="PackedScene" uid="uid://x7j58ewwj5md" path="res://Assets/Prefabs/SceneTransition.tscn" id="1_guh84"]
+
+[node name="JimScene" type="Node2D"]
+
+[node name="SceneTransition" parent="." instance=ExtResource("1_guh84")]
