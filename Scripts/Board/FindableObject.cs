@@ -4,6 +4,7 @@ using System;
 public partial class FindableObject : Resource {
 	[Export] public Texture2D icon;
 
+	[Export] public Vector2 spriteOffset;
 	[Export] public Vector2[] tilePositions;
 
 	[Export] public int value;

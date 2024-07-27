@@ -1,17 +1,35 @@
-[gd_scene load_steps=13 format=3 uid="uid://vo5galppdjl1"]
+[gd_scene load_steps=27 format=3 uid="uid://vo5galppdjl1"]
 
 [ext_resource type="Script" path="res://Scripts/Board/GameManager.cs" id="1_7woft"]
 [ext_resource type="PackedScene" uid="uid://x7j58ewwj5md" path="res://Assets/Prefabs/SceneTransition.tscn" id="1_650y6"]
 [ext_resource type="Resource" uid="uid://dtte2yk8l3w2g" path="res://Assets/Data/Tools/ToolBrush.tres" id="2_00xhi"]
 [ext_resource type="TileSet" uid="uid://d4am5wvxwmpum" path="res://Assets/Data/TileSet.tres" id="4_rmdj1"]
+[ext_resource type="Resource" uid="uid://pthl5ep5dxaj" path="res://Assets/Data/Findables/FindableAmber.tres" id="6_cwto0"]
+[ext_resource type="Resource" uid="uid://0fygbe3n0ilr" path="res://Assets/Data/Findables/FindableBone.tres" id="7_cn0n0"]
 [ext_resource type="Script" path="res://Scripts/Board/GameBoard.cs" id="7_enu61"]
-[ext_resource type="Resource" uid="uid://cxuce2m1nhtla" path="res://Assets/Data/Findables/FindableDevObject.tres" id="8_rt0k6"]
+[ext_resource type="Resource" uid="uid://ofyiq8vjpus8" path="res://Assets/Data/Findables/FindableGoldfish.tres" id="8_wc7vh"]
+[ext_resource type="Resource" uid="uid://c26m0k3k72yev" path="res://Assets/Data/Findables/FindableRat.tres" id="9_483bh"]
 [ext_resource type="Texture2D" uid="uid://dg7ayfnyltil8" path="res://Assets/Textures/dev.png" id="9_c78hb"]
+[ext_resource type="Script" path="res://Scripts/UI/ToolButton.cs" id="9_hn3mm"]
 [ext_resource type="Texture2D" uid="uid://cvfdou8oswm3e" path="res://Assets/Textures/Tool-Dynamite.png" id="10_exsxs"]
+[ext_resource type="Resource" uid="uid://dwi4sxyhtactd" path="res://Assets/Data/Findables/FindableAmethyst.tres" id="10_h2al8"]
+[ext_resource type="Resource" uid="uid://cno1kltty4k7r" path="res://Assets/Data/Tools/ToolTNT.tres" id="10_xgkr7"]
 [ext_resource type="Texture2D" uid="uid://bppy5v134fdv" path="res://Assets/Textures/Tool-Magnifying_Glass.png" id="11_b8u0y"]
+[ext_resource type="Resource" uid="uid://cdsjd6v5yj0oh" path="res://Assets/Data/Findables/FindableEmerald.tres" id="11_r75wd"]
+[ext_resource type="Resource" uid="uid://42noqg1x5jn8" path="res://Assets/Data/Tools/ToolMagnify.tres" id="12_dxq23"]
+[ext_resource type="Resource" uid="uid://blvbnhakac1tm" path="res://Assets/Data/Findables/FindableRuby.tres" id="12_icrcj"]
 [ext_resource type="Texture2D" uid="uid://dqhpebjs6r4w4" path="res://Assets/Textures/Tool-Hammer.png" id="12_re038"]
+[ext_resource type="Resource" uid="uid://bvihdcmnwac4h" path="res://Assets/Data/Findables/FindableSapphire.tres" id="13_2hngg"]
 [ext_resource type="Texture2D" uid="uid://dg10b3wrchonp" path="res://Assets/Textures/Tool-Pickaxe.png" id="13_d415a"]
 [ext_resource type="Texture2D" uid="uid://b4jln76sw48jt" path="res://Assets/Textures/Tool-Brush.png" id="14_10e2l"]
+[ext_resource type="Resource" uid="uid://6a8clqgc3534" path="res://Assets/Data/Tools/ToolHammer.tres" id="14_j2125"]
+[ext_resource type="Resource" uid="uid://5n2yhq6f6pew" path="res://Assets/Data/Tools/ToolChisle.tres" id="16_36ni7"]
+[ext_resource type="Script" path="res://Scripts/UI/MoneyDisplay.cs" id="18_d77hg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e3loi"]
+font_size = 64
+font_color = Color(0, 0.235294, 0, 1)
+outline_size = 24
 
 [node name="GameScene" type="Node2D" node_paths=PackedStringArray("sceneManager", "gameBoard")]
 script = ExtResource("1_7woft")
@@ -29,7 +47,7 @@ layer_0/tile_data = PackedInt32Array(2, 0, 0, 65538, 0, 0, 131074, 0, 0, 131073,
 script = ExtResource("7_enu61")
 GameManager = NodePath("..")
 treasureSprite = NodePath("Treasure")
-findableObjects = Array[Resource]([ExtResource("8_rt0k6")])
+findableObjects = Array[Resource]([ExtResource("6_cwto0"), ExtResource("7_cn0n0"), ExtResource("8_wc7vh"), ExtResource("9_483bh"), ExtResource("10_h2al8"), ExtResource("11_r75wd"), ExtResource("12_icrcj"), ExtResource("13_2hngg")])
 
 [node name="Treasure" type="Sprite2D" parent="TileMap"]
 z_index = -1
@@ -54,31 +72,60 @@ layout_mode = 2
 size_flags_vertical = 3
 columns = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer" node_paths=PackedStringArray("gameManager")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 icon = ExtResource("10_exsxs")
+script = ExtResource("9_hn3mm")
+gameManager = NodePath("../../../../..")
+tool = ExtResource("10_xgkr7")
 
-[node name="Button2" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer"]
+[node name="Button2" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer" node_paths=PackedStringArray("gameManager")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 icon = ExtResource("11_b8u0y")
+script = ExtResource("9_hn3mm")
+gameManager = NodePath("../../../../..")
+tool = ExtResource("12_dxq23")
 
-[node name="Button3" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer"]
+[node name="Button3" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer" node_paths=PackedStringArray("gameManager")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 icon = ExtResource("12_re038")
+script = ExtResource("9_hn3mm")
+gameManager = NodePath("../../../../..")
+tool = ExtResource("14_j2125")
 
-[node name="Button4" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer"]
+[node name="Button4" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer" node_paths=PackedStringArray("gameManager")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 icon = ExtResource("13_d415a")
+script = ExtResource("9_hn3mm")
+gameManager = NodePath("../../../../..")
+tool = ExtResource("16_36ni7")
 
-[node name="Button5" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer"]
+[node name="Button5" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/GridContainer" node_paths=PackedStringArray("gameManager")]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 icon = ExtResource("14_10e2l")
+script = ExtResource("9_hn3mm")
+gameManager = NodePath("../../../../..")
+tool = ExtResource("2_00xhi")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 225)
 layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/Panel" node_paths=PackedStringArray("gameManager")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "$0000.00"
+label_settings = SubResource("LabelSettings_e3loi")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("18_d77hg")
+gameManager = NodePath("../../../../..")

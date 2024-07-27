@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bvihdcmnwac4h"]
+
+[ext_resource type="Texture2D" uid="uid://bn3oyuwr4g7sk" path="res://Assets/Textures/Gemstone-Sapphire.png" id="1_xwhyt"]
+[ext_resource type="Script" path="res://Scripts/Board/FindableObject.cs" id="2_tvmkq"]
+
+[resource]
+script = ExtResource("2_tvmkq")
+icon = ExtResource("1_xwhyt")
+spriteOffset = Vector2(0, 0)
+tilePositions = PackedVector2Array(0, 0)
+value = 5
+revealOptions = null

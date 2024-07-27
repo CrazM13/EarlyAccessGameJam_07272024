@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c26m0k3k72yev"]
+
+[ext_resource type="Texture2D" uid="uid://r8uj6842bkwb" path="res://Assets/Textures/Mummified_Rat.png" id="1_11brp"]
+[ext_resource type="Script" path="res://Scripts/Board/FindableObject.cs" id="2_cd4qi"]
+
+[resource]
+script = ExtResource("2_cd4qi")
+icon = ExtResource("1_11brp")
+spriteOffset = Vector2(0, 0)
+tilePositions = PackedVector2Array(0, 0)
+value = 1
+revealOptions = null

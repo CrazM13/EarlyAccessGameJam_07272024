@@ -1,11 +1,10 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class GameBoard : TileMap {
 
 	private Vector2I[] AlternateTilePositions = new Vector2I[2];
-	private bool isReadyToCrack;
-	private bool[] isCracked = new bool[2];
 
 	private Vector2I treasureLocation;
 	private FindableObject treasureObject;
@@ -48,6 +47,10 @@ public partial class GameBoard : TileMap {
 
 			AlternateTilePositions[i] = target;
 		}
+
+		foreach (Vector2I tile in GetLine(AlternateTilePositions[0], AlternateTilePositions[1])) {
+			SetCell(0, tile, GetCellSourceId(0, tile), Vector2I.Zero, 1);
+		}
 	}
 
 	public bool Dig(Vector2I position) {
@@ -62,36 +65,18 @@ public partial class GameBoard : TileMap {
 		}
 
 
-		int distanceToCrackA = Mathf.Abs(position.X - AlternateTilePositions[0].X) + Mathf.Abs(position.Y - AlternateTilePositions[0].Y);
-		int distanceToCrackB = Mathf.Abs(position.X - AlternateTilePositions[1].X) + Mathf.Abs(position.Y - AlternateTilePositions[1].Y);
+		for (int x = -1; x <= 1; x++) {
+			for (int y = -1; y <= 1; y++) {
+				Vector2I newPos = position + new Vector2I(x, y);
+				if (GetCellAlternativeTile(0, newPos) == 1) {
+					state = GetCellSourceId(0, newPos);
 
-		if (!isReadyToCrack) {
-			if (distanceToCrackA <= 1) {
-				isCracked[0] = true;
-				isReadyToCrack = true;
-				if (distanceToCrackA != 0) Dig(AlternateTilePositions[0]);
-			}
-
-			if (distanceToCrackB <= 1) {
-				isCracked[1] = true;
-				isReadyToCrack = !isReadyToCrack;
-				if (distanceToCrackB != 0) Dig(AlternateTilePositions[1]);
-			}
-		} else {
-			if (distanceToCrackA <= 1 && isCracked[1]) {
-				isCracked[0] = true;
-				isReadyToCrack = false;
-				if (distanceToCrackA != 0) Dig(AlternateTilePositions[0]);
-
-				// Connect Cracks
-			}
-
-			if (distanceToCrackB <= 1 && isCracked[0]) {
-				isCracked[0] = true;
-				isReadyToCrack = false;
-				if (distanceToCrackA != 0) Dig(AlternateTilePositions[1]);
-
-				// Connect Cracks
+					if (state > 0) {
+						SetCell(0, newPos, state - 1, Vector2I.Zero, 1);
+					} else if (state == 0) {
+						EraseCell(0, newPos);
+					}
+				}
 			}
 		}
 
@@ -126,7 +111,7 @@ public partial class GameBoard : TileMap {
 			return false;
 		}
 
-		treasureSprite.Position = new Vector2((originX + 0.5f) * 128, (originY + 0.5f) * 128);
+		treasureSprite.Position = new Vector2((originX + 0.5f) * 128, (originY + 0.5f) * 128) + item.spriteOffset;
 		treasureSprite.Texture = item.icon;
 
 		treasureObject = item;
@@ -176,6 +161,18 @@ public partial class GameBoard : TileMap {
 
 
 		treasureSprite.Visible = true;
+	}
+
+	public static List<Vector2I> GetLine(Vector2I start, Vector2I end) {
+		List<Vector2I> line = new List<Vector2I>();
+
+		Vector2 middlePoint = (Vector2)(start + end) / 2f;
+
+		line.Add((Vector2I) ((Vector2) (start + middlePoint) / 2f));
+		line.Add((Vector2I) middlePoint);
+		line.Add((Vector2I) ((Vector2) (middlePoint + end) / 2f));
+
+		return line;
 	}
 
 }
