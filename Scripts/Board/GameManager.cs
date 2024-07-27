@@ -4,29 +4,30 @@ using System;
 public partial class GameManager : Node {
 
 	[Export] private ToolBase startingTool;
+	[Export] private int startingMoney;
 
 	[Export] private SceneTransition sceneManager;
 	[Export] private GameBoard gameBoard;
 
-	private int money;
+	private static int money;
 
 	private ToolBase tool;
 
 	public override void _Ready() {
 		SetTool(startingTool);
-		if (money == 0) { money = 25; }
+		if (money == 0) { money = startingMoney; }
 	}
 
 	public int GetMoney() => money;
 
-	public void SetMoney(int money) => this.money = money;
+	public void SetMoney(int money) => GameManager.money = money;
 
-	public void AddMoney(int money) => this.money += money;
+	public void AddMoney(int money) => GameManager.money += money;
 
 	public void DeductMoney(int money) {
-		this.money -= money;
+		GameManager.money -= money;
 
-		if (this.money <= 0) {
+		if (GameManager.money <= 0) {
 			sceneManager.LoadScene("res://Scenes/GameOver.tscn");
 		}
 	}
@@ -38,15 +39,18 @@ public partial class GameManager : Node {
 	public override void _Process(double delta) {
 		base._Process(delta);
 
-		bool isMousePressed = Input.IsMouseButtonPressed(MouseButton.Left);
+		if (tool != null) {
 
-		if (isMousePressed && !wasMousePressed) {
-			Vector2I mousePosition = (Vector2I)(gameBoard.ToLocal(GetViewport().GetMousePosition()) / 128);
+			bool isMousePressed = Input.IsMouseButtonPressed(MouseButton.Left);
 
-			tool.OnUse(mousePosition, gameBoard);
+			if (isMousePressed && !wasMousePressed) {
+				Vector2I mousePosition = (Vector2I) (gameBoard.ToLocal(GetViewport().GetMousePosition()) / 128);
+
+				tool.OnUse(mousePosition, gameBoard);
+			}
+
+			wasMousePressed = isMousePressed;
 		}
-
-		wasMousePressed = isMousePressed;
 	}
 
 }

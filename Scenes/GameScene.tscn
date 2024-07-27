@@ -34,6 +34,7 @@ outline_size = 24
 [node name="GameScene" type="Node2D" node_paths=PackedStringArray("sceneManager", "gameBoard")]
 script = ExtResource("1_7woft")
 startingTool = ExtResource("2_00xhi")
+startingMoney = 25
 sceneManager = NodePath("SceneTransition")
 gameBoard = NodePath("TileMap")
 

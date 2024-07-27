@@ -48,4 +48,8 @@ public partial class SceneTransition : AnimationPlayer {
 		LoadScene(GetTree().CurrentScene.SceneFilePath, delay);
 	}
 
+	public void Quit() {
+		GetTree().Quit();
+	}
+
 }
