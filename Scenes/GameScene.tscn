@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://vo5galppdjl1"]
+[gd_scene load_steps=30 format=3 uid="uid://vo5galppdjl1"]
 
 [ext_resource type="Script" path="res://Scripts/Board/GameManager.cs" id="1_7woft"]
 [ext_resource type="PackedScene" uid="uid://x7j58ewwj5md" path="res://Assets/Prefabs/SceneTransition.tscn" id="1_650y6"]
 [ext_resource type="Resource" uid="uid://dtte2yk8l3w2g" path="res://Assets/Data/Tools/ToolBrush.tres" id="2_00xhi"]
 [ext_resource type="TileSet" uid="uid://d4am5wvxwmpum" path="res://Assets/Data/TileSet.tres" id="4_rmdj1"]
+[ext_resource type="Texture2D" uid="uid://bf63krttghfp4" path="res://Assets/Textures/Layer_Turf.png" id="5_ifrdw"]
 [ext_resource type="Resource" uid="uid://pthl5ep5dxaj" path="res://Assets/Data/Findables/FindableAmber.tres" id="6_cwto0"]
 [ext_resource type="Resource" uid="uid://0fygbe3n0ilr" path="res://Assets/Data/Findables/FindableBone.tres" id="7_cn0n0"]
 [ext_resource type="Script" path="res://Scripts/Board/GameBoard.cs" id="7_enu61"]
@@ -27,6 +28,9 @@
 [ext_resource type="Resource" uid="uid://5n2yhq6f6pew" path="res://Assets/Data/Tools/ToolChisle.tres" id="16_36ni7"]
 [ext_resource type="Script" path="res://Scripts/UI/MoneyDisplay.cs" id="18_d77hg"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t70uv"]
+bg_color = Color(0.278431, 0.278431, 0.278431, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_e3loi"]
 font_size = 64
 font_color = Color(0, 0.235294, 0, 1)
@@ -38,6 +42,16 @@ startingTool = ExtResource("2_00xhi")
 startingMoney = 25
 sceneManager = NodePath("SceneTransition")
 gameBoard = NodePath("TileMap")
+
+[node name="BG" type="Sprite2D" parent="."]
+self_modulate = Color(0.262745, 0.196078, 0.247059, 1)
+visibility_layer = 129
+z_index = -100
+texture_repeat = 2
+position = Vector2(510, 398)
+texture = ExtResource("5_ifrdw")
+region_enabled = true
+region_rect = Rect2(0, 0, 2048, 1024)
 
 [node name="SceneTransition" parent="." instance=ExtResource("1_650y6")]
 
@@ -65,6 +79,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t70uv")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
