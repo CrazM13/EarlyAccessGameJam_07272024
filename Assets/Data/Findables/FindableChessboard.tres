@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://2h55we3agbpu"]
+
+[ext_resource type="Texture2D" uid="uid://dcwlwubex0qio" path="res://Assets/Textures/Chessboard.png" id="1_ew1vx"]
+[ext_resource type="Script" path="res://Scripts/Board/FindableObject.cs" id="2_6ktyx"]
+
+[resource]
+script = ExtResource("2_6ktyx")
+icon = ExtResource("1_ew1vx")
+spriteOffset = Vector2(64, 64)
+tilePositions = PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 0)
+value = 10
+revealOptions = null

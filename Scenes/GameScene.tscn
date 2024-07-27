@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://vo5galppdjl1"]
+[gd_scene load_steps=34 format=3 uid="uid://vo5galppdjl1"]
 
 [ext_resource type="Script" path="res://Scripts/Board/GameManager.cs" id="1_7woft"]
 [ext_resource type="PackedScene" uid="uid://x7j58ewwj5md" path="res://Assets/Prefabs/SceneTransition.tscn" id="1_650y6"]
@@ -26,7 +26,11 @@
 [ext_resource type="Texture2D" uid="uid://b4jln76sw48jt" path="res://Assets/Textures/Tool-Brush.png" id="14_10e2l"]
 [ext_resource type="Resource" uid="uid://6a8clqgc3534" path="res://Assets/Data/Tools/ToolHammer.tres" id="14_j2125"]
 [ext_resource type="Resource" uid="uid://5n2yhq6f6pew" path="res://Assets/Data/Tools/ToolChisle.tres" id="16_36ni7"]
+[ext_resource type="Resource" uid="uid://cah05mg5h45a1" path="res://Assets/Data/Findables/FindableSkull.tres" id="16_vxo1a"]
+[ext_resource type="Resource" uid="uid://pwr0nh4ydcek" path="res://Assets/Data/Findables/FindableVase.tres" id="17_2iv2l"]
 [ext_resource type="Script" path="res://Scripts/UI/MoneyDisplay.cs" id="18_d77hg"]
+[ext_resource type="Resource" uid="uid://d4f6k4f8704ld" path="res://Assets/Data/Findables/FindableNecklass.tres" id="18_ls4m3"]
+[ext_resource type="Resource" uid="uid://2h55we3agbpu" path="res://Assets/Data/Findables/FindableChessboard.tres" id="19_7jwoj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t70uv"]
 bg_color = Color(0.278431, 0.278431, 0.278431, 1)
@@ -63,7 +67,7 @@ layer_0/tile_data = PackedInt32Array(2, 0, 0, 65538, 0, 0, 131074, 0, 0, 131073,
 script = ExtResource("7_enu61")
 GameManager = NodePath("..")
 treasureSprite = NodePath("Treasure")
-findableObjects = Array[Resource]([ExtResource("6_cwto0"), ExtResource("7_cn0n0"), ExtResource("8_wc7vh"), ExtResource("9_483bh"), ExtResource("10_h2al8"), ExtResource("11_r75wd"), ExtResource("12_icrcj"), ExtResource("13_2hngg"), ExtResource("14_6ncas")])
+findableObjects = Array[Resource]([ExtResource("6_cwto0"), ExtResource("7_cn0n0"), ExtResource("8_wc7vh"), ExtResource("9_483bh"), ExtResource("10_h2al8"), ExtResource("11_r75wd"), ExtResource("12_icrcj"), ExtResource("13_2hngg"), ExtResource("14_6ncas"), ExtResource("16_vxo1a"), ExtResource("17_2iv2l"), ExtResource("18_ls4m3"), ExtResource("19_7jwoj")])
 
 [node name="Treasure" type="Sprite2D" parent="TileMap"]
 z_index = -1

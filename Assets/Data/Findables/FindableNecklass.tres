@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d4f6k4f8704ld"]
+
+[ext_resource type="Texture2D" uid="uid://dflplyssplchp" path="res://Assets/Textures/Ancient Necklace.png" id="1_krd7w"]
+[ext_resource type="Script" path="res://Scripts/Board/FindableObject.cs" id="2_ao12v"]
+
+[resource]
+script = ExtResource("2_ao12v")
+icon = ExtResource("1_krd7w")
+spriteOffset = Vector2(0, 0)
+tilePositions = PackedVector2Array(0, 0)
+value = 5
+revealOptions = null
